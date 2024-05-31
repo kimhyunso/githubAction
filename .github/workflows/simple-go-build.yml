@@ -1,0 +1,18 @@
+name: Simple Go Build # 워크플로우 이름
+
+on: # 워크플로우 발동
+  push:
+    branches: # Repository에 푸시된 이후 동작
+      - main
+
+jobs: # 잡 정의
+  love: # love라는 이름의 잡 실행
+    runs-on: ubuntu-latest # 우분투 운영체제 이미지로 러너 실행
+    steps: # 잡에서 실행할 스텝을 순서대로 정의
+      - uses: actions/checkout@v3 # 사전에 정의된 액션 파라미터가 없음
+      - name: setup Go version # (-)하이픈으로 새로운 스텝이 시작됨
+        uses: actions/setup-go@v2 # 미리 정의된 액션 호출 Go 환경 설정
+        with:
+          go-version: '1.14.0' # Go 버전을 파라미터로 설정 with절 시작 부분에 파라미터를 정해서 14행 액션에 넘겨주는 역활
+      - run: go run hellowrold.go # 다시 새로운 스텝의 시작점 run 키워드로 정해진 셀 명령어를 실행함
+      # 리포지토리에 있는 저 파일에다가 go run 명령어 수행
