@@ -13,7 +13,7 @@ jobs:
       - uses: Actions/checkout@v3
       
       - name : Run a one-line script
-        run: eco Hello, world!
+        run: echo Hello, world!
 
       - name: Run a multi-line script
         run: |
